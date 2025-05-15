@@ -1,7 +1,10 @@
-package com.pluralsight;
+package com.pluralsight.ui;
+
+import com.pluralsight.data.DealershipFileManager;
+import com.pluralsight.models.Dealership;
+import com.pluralsight.models.Vehicle;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface {
