@@ -1,6 +1,9 @@
 package com.pluralsight.models;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class Dealership {
     private String name;
@@ -39,32 +42,65 @@ public class Dealership {
         this.phoneNumber = phoneNumber;
     }
 
+
     public ArrayList<Vehicle> getVehiclesByPrice(double min, double max) {
-        return this.getAllVehicles();
+        ArrayList<Vehicle> vehicles = new ArrayList<>();
+        for(Vehicle vehicle : this.inventory){
+            if(min <= vehicle.getPrice() && max >= vehicle.getPrice()){
+                vehicles.add(vehicle);
+            }
+        }
+        return vehicles;
     }
 
     public ArrayList<Vehicle> getVehiclesByMakeModel(String make, String model) {
-        return this.getAllVehicles();
-
+        ArrayList<Vehicle> vehicles = new ArrayList<>();
+        for(Vehicle vehicle : this.inventory){
+            if(make.trim().equalsIgnoreCase(vehicle.getMake()) && model.trim().equalsIgnoreCase(model)){
+                vehicles.add(vehicle);
+            }
+        }
+        return vehicles;
     }
 
     public ArrayList<Vehicle> getVehiclesByYear(int min, int max) {
-        return this.getAllVehicles();
-
+        ArrayList<Vehicle> vehicles = new ArrayList<>();
+        for(Vehicle vehicle : this.inventory){
+            if(min <= vehicle.getYear() && max >= vehicle.getYear()){
+                vehicles.add(vehicle);
+            }
+        }
+        return vehicles;
     }
 
     public ArrayList<Vehicle> getVehiclesByColor(String color) {
-        return this.getAllVehicles();
-
+        ArrayList<Vehicle> vehicles = new ArrayList<>();
+        for(Vehicle vehicle : this.inventory){
+            if(color.trim().equalsIgnoreCase(vehicle.getColor())){
+                vehicles.add(vehicle);
+            }
+        }
+        return vehicles;
     }
 
     public ArrayList<Vehicle> getVehiclesByMileage(int min, int max) {
-        return this.getAllVehicles();
-
+        ArrayList<Vehicle> vehicles = new ArrayList<>();
+        for(Vehicle vehicle : this.inventory){
+            if(min <= vehicle.getPrice() && max >= vehicle.getPrice()){
+                vehicles.add(vehicle);
+            }
+        }
+        return vehicles;
     }
 
     public ArrayList<Vehicle> getVehiclesByType(String type) {
-        return this.getAllVehicles();
+        ArrayList<Vehicle> vehicles = new ArrayList<>();
+        for(Vehicle vehicle : this.inventory){
+            if(type.trim().equalsIgnoreCase(vehicle.getVehicleType())){
+                vehicles.add(vehicle);
+            }
+        }
+        return vehicles;
     }
 
     public ArrayList<Vehicle> getAllVehicles() {
@@ -76,7 +112,11 @@ public class Dealership {
     }
 
     public void removeVehicle(int vin) {
-        System.out.println("Removing vehicle.... " + vin);
+        for(Vehicle vehicle : this.inventory){
+            if(vehicle.getVin() == vin){
+                this.inventory.remove(vehicle);
+            }
+        }
     }
 
     @Override
