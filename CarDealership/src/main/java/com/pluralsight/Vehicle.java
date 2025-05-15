@@ -10,7 +10,8 @@ public class Vehicle {
     private int odometer;
     private double price;
 
-    public Vehicle(int vin, int year, String make, String model, String vehicleType, String color, int odometer, double price) {
+    public Vehicle(int vin, int year, String make, String model, String vehicleType, String color, int odometer,
+                   double price) {
         this.vin = vin;
         this.year = year;
         this.make = make;
@@ -87,17 +88,15 @@ public class Vehicle {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Vehicle{");
-        sb.append("vin=").append(vin);
-        sb.append(", year=").append(year);
-        sb.append(", make='").append(make).append('\'');
-        sb.append(", model='").append(model).append('\'');
-        sb.append(", vehicleType='").append(vehicleType).append('\'');
-        sb.append(", color='").append(color).append('\'');
-        sb.append(", odometer=").append(odometer);
-        sb.append(", price=").append(price);
-        sb.append('}');
-        return sb.toString();
+        return "\nVEHICLE" +
+                "\n\tVin: " + vin +
+                "\n\tYear: " + year +
+                "\n\tMake: '" + make + '\'' +
+                "\n\tModel: '" + model + '\'' +
+                "\n\tVehicle Type: '" + vehicleType + '\'' +
+                "\n\tColor: '" + color + '\'' +
+                "\n\tMileage: " + odometer +
+                "\n\tPrice: $" + String.format("%.2f", price);
     }
 }
 
